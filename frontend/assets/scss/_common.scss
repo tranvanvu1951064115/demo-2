@@ -1,0 +1,57 @@
+body {
+    overflow-x: hidden;
+    &.over-hidden {
+        overflow: hidden;
+    }
+}
+
+.btn {
+    padding: 10px 20px;
+    font-size: 15px;
+    font-weight: 700;
+    border-radius: 40px;
+    min-width: 300px;
+    text-decoration: none!important;
+
+    &--primary {
+        font-size: inherit;
+        background-color: $primary-color;
+        color: white !important;
+        border: 1px solid $primary-color;
+
+        &:hover {
+            color: $primary-color !important;
+            background-color: white;
+        }
+    }
+
+    &--secondary {
+        font-size: inherit;
+        color: $primary-color !important;
+        background-color: white;
+        border: thin solid #e0dddd;
+
+        &:hover {
+            color: white !important;
+            background-color: $primary-color;
+        }
+    }
+
+}
+
+// Copyright
+.copyright {
+    color: $primary-color;
+}
+
+.text-primary, a:hover {
+    color: $primary-color!important;
+    fill: $primary-color!important;
+}
+
+.text-danger {
+    color: red!important;
+    fill: red!important;
+}
+
+

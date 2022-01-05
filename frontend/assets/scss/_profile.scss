@@ -1,0 +1,181 @@
+.profile {
+    &__info-main {
+        margin-bottom: 50px;
+        position: relative;
+    }
+
+    &__infor-left {}
+
+    &__avatar {
+        position: absolute;
+        top: 0;
+        left: 30px;
+        transform: translateY(-50%);
+    }
+
+    &__edit, &__follow-button {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        margin-bottom: 50px;
+
+        .btn {
+            margin-top: 20px;
+            min-width: unset;
+            border: 1px solid $primary-color;
+        }
+    }
+
+    &__name {
+        margin-left: 30px;
+        margin-bottom: 30px;
+        display: inline-flex;
+        flex-direction: column;
+        align-items: center;
+
+        >span {
+            color: #73808b;
+        }
+    }
+
+    &__fullname {
+        font-size: 30px;
+    }
+
+    &__follow {
+        margin-left: 30px;
+    }
+
+    &__following {}
+
+    &__follower {}
+
+    &__tweet {
+        margin-left: -12px;
+        margin-right: -12px;
+
+        >h6 {
+            font-size: 20px;
+            margin-bottom: 20px !important;
+            border-bottom: 1px solid #f1f1f1;
+        }
+    }
+
+    // PROFILE SETUP
+    &__setup {
+        position: fixed;
+        background-color: rgba(0,0,0,0.2);
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 11;
+        display: none;
+        justify-content: center;
+        align-items: center;
+        &-main {
+            width: 600px;
+            border-radius: 30px;
+            background-color:white;
+            height: 700px;
+            > div:not(:nth-child(2)) {
+                padding: 13px 20px;
+            }
+            .btn {
+                min-width: unset;
+                padding: 6px 20px;
+            }
+        }
+        &.active {
+            display: flex;
+        }
+    }
+
+    &__setup-header {
+        border-bottom: 1px solid #f1f1f1;
+    }
+
+    &__setup-header-left {
+
+    }
+
+    &__background {
+        position: relative;
+        z-index: 1;
+        img {
+            border-radius: 5px;
+        }
+        input {
+            position: absolute;
+            opacity: 0;
+            top: 0;
+            left: 0;
+            display: block;
+            width: 100%;
+            height: 100%;
+            cursor: pointer;
+            z-index: 2;
+        }
+        i {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 1;
+            color: $primary-color;
+        }
+    }
+
+    &__info-main {
+        position: relative;
+        z-index: 2;
+    }
+
+    &__avatar {
+        box-shadow: 0 0 0 5px #fff;
+        border-radius: 50%;
+        input {
+            position: absolute;
+            opacity: 0;
+            top: 0;
+            left: 0;
+            display: block;
+            width: 100%;
+            height: 100%;
+            cursor: pointer;
+            z-index: 2;
+        }
+        i {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 1;
+            color: $primary-color;
+        }
+    }
+
+    &__setup-name {
+        margin-top: 100px;
+    }
+
+    span.close.closeBoxEdit {
+        padding: 10px;
+        margin-left: -10px;
+        border-radius: 50%;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        &:hover {
+            background-color: #f1f1f1;
+            cursor: pointer;
+        }
+        i {
+            width: 20px;
+            height: 20px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+    }
+}

@@ -1,0 +1,4 @@
+RewriteEngine On
+
+RewriteRule ^(verification|signUp|login|index|home|explore|profile|editprofile|tweetWithComments|message|notification|explore)/?$ $1.php
+RewriteRule ^verification/([a-zA-Z0-9]+)/?$ verification.php?verify=$1

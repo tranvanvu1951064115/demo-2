@@ -1,0 +1,74 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+
+html {
+    font-size: 16px;
+}
+
+body {
+    // overflow-x: hidden;
+}
+
+img, svg {
+    display: inline-block;
+    max-width: 100%;
+    object-fit: cover;
+} 
+
+button {
+    cursor: pointer;
+    border: none;
+}
+
+ul {
+    padding: unset;
+}
+
+li {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+//---------------------------------------- MIXIN--------------------------------------------
+
+// FLEX BOX
+@mixin flexbox($align: stretch, $justify: flex-start, $wrap: nowrap, $dir: row) {
+    display: flex;
+    justify-content: $justify;
+    align-items: $align;
+    flex-wrap: $wrap;
+    flex-direction: $dir;
+}
+
+// SIZE BOX
+@mixin size($width, $height: $width) {
+    width: $width;
+    height: $height;
+}
+
+// RESPONSIVE
+@mixin responsive($min: 0, $max: 0) {
+    @if $min != 0 and $max != 0 {
+        @media screen and (min-width: $min) and (max-width: $max) {
+            @content;
+        }
+    } @else if $min != 0 {
+        @media screen and (min-width: $min) {
+            @content;
+        }
+    } @else {
+        @media screen and (max-width: $max) {
+            @content;
+        }
+    }
+}
+
+//----------------------------------------END MIXIN--------------------------------------------
