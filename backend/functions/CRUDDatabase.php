@@ -4,7 +4,7 @@
         function userData($user_id) {
             global $conn;
             // Lấy thông tin người dùng
-            $statement = $conn->prepare("SELECT * FROM tb_users WHERE user_id=:userid");
+            $statement = $conn->prepare("SELECT * FROM tb_users WHERE user_id=:userid AND user_isAdmin = '0'");
             // Truyền dữ liệu vào prepare statement
             $statement->bindParam(":userid", $user_id, PDO::PARAM_INT);
             $statement->execute();

@@ -53,9 +53,9 @@ echo "<script src='./backend/ajax/handleFollow.js' defer></script>";
             <!----- LEFT SIDE BAR ----->
             <?php include 'backend/shared/leftSidebar.php'; ?>
             <!-- MAIN SECTION -->
-            <div class="main col-md-9 p-0 row">
+            <div class="main col-xl-6 col-lg-9 col-md-10 col-sm-10 p-0">
                 <!-- CONTENT SECTION -->
-                <div class="content col-md-7">
+                <div class="content">
                     <div class="content__header">
                         <h2 class="mb-0 text-primary">
                             <a href="<?php echo url_for('home'); ?>">
@@ -71,14 +71,24 @@ echo "<script src='./backend/ajax/handleFollow.js' defer></script>";
                             </svg>
                         </a>
                     </div>
+                    <?php echo "<script src='./backend/ajax/handleSearchForRSideBar.js' defer></script>";?>
+                    <!-- SEARCH SECTION -->
+                    <div class="r-sidebar__header header-for-search">
+                        <span class="search">
+                            <i class="bi bi-search"></i>
+                        </span>
+                        <input type="text" name="searchTwitter" class="searchTwitter" placeholder="Search Twitter">
+                        <!-- RESULT OF SEARCH -->
+                        <ul class="r-sidebar__boxResultSearch r-sidebar__main-menu"></ul>
+                    </div>
                     <div></div>
                     <!-- DISPLAY FOR TWEET -->
                     <ul class="content__tweets"></ul>
                 </div>
-                <!-- RIGHT SIDE BAR SECTION -->
-                <div class="r-sidebar col-md-5">
-                    <?php include 'backend/shared/r-sidebar.php'; ?> 
-                </div>
+            </div>
+            <!-- RIGHT SIDE BAR SECTION -->
+            <div class="r-sidebar col-xl-3 col-lg-3 col-md-3">
+                <?php include 'backend/shared/r-sidebar.php'; ?> 
             </div>
         </div>
 

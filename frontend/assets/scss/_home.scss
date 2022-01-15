@@ -1,12 +1,6 @@
-.main {
-    margin-left: 320px;
-}
-
 .content {
-    border-right: 1px solid #f1f1f1;
-
     &__header {
-        position: fixed;
+        position: sticky;
         top: 0;
         z-index: 10;
         display: flex;
@@ -14,19 +8,13 @@
         align-items: center;
         font-size: 20px;
         color: $secondary-color;
-        height: 53px;
-        width: 555px;
         transform: scaleX(1.01);
         border-bottom: 1px solid #f1f1f1;
         background-color: white;
-
+        padding: 8px 12px;
         h2 {
             font-size: inherit;
             font-weight: bold;
-        }
-
-        +div {
-            margin-top: 53px;
         }
 
         a {
@@ -53,6 +41,7 @@
         flex-direction: column;
         border-bottom: 1px solid #f1f1f1;
         margin-bottom: 10px;
+        padding: 12px;
 
         &-input {
             display: flex;
@@ -218,6 +207,10 @@
 
         &:hover {}
     }
+
+    .r-sidebar__header {
+        display: none;
+    }
 }
 
 .content__tweets {}
@@ -228,7 +221,6 @@
     border-radius: 5px;
 
     &-container {
-        margin-bottom: 30px;
         border-top: 1px solid #f1f1f1;
     }
 
@@ -567,4 +559,71 @@
             }
         }
     }
+
+    &-comments {
+        position: relative;
+        border-top: 2px solid #ccc;
+        // &::before {
+        //     content: "";
+        //     width: 2px;
+        //     height: 100%;
+        //     position: absolute;
+        //     left: 10px;
+        //     top: 0;     
+        //     background-color: #ccc;       
+        // }
+
+        li {
+            border-bottom: 1px solid #f1f1f1;
+        }
+    }
+}
+
+@include responsive(1200px, 1279px) {
+    .col-lg-9 {
+        max-width: 75%;
+        width: 75%;
+    }
+}
+
+@include responsive(0, 999px) {
+    .content .r-sidebar__header {
+        display: flex;
+    }
+}
+
+@include responsive(0, 767px) {
+    .container {
+        max-width: 700px;
+    }
+
+    .col-md-9 {
+        max-width: 83.33333%
+    }
+
+    .content__tweetby + span {
+        display: none;
+    }
+    
+}
+
+@include responsive(0, 575px) {
+    .container {
+        max-width: 550px;
+    }
+
+    .col-sm-10 {
+        flex: 0 0 auto;
+        width: 83.33333333%;
+    }
+
+    .col-sm-2 {
+        flex: 0 0 auto;
+        width: 16.66666667%;
+    }
+
+    .content__tweet-detail {
+        margin-left: 10px;
+    }
+
 }

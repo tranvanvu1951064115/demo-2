@@ -35,10 +35,10 @@ unset($_SESSION['isExplore']);
 
 echo "<script src='./frontend/assets/js/leftSideBar/active.js' type='module' defer></script>";
 echo "<script src='./frontend/assets/js/leftSideBar/popUpUserLogout.js' type='module' defer></script>";
+echo "<script src='./frontend/assets/js/home/processDisplayImageWhenUpload.js' defer></script>";
 echo "<script src='./frontend/assets/js/home/app.js' type='module' defer></script>";
 echo "<script src='./frontend/assets/js/home/handleReply.js' defer></script>";
 echo "<script src='./frontend/assets/js/home/navProfile.js' defer></script>";
-echo "<script src='./frontend/assets/js/home/processDisplayImageWhenUpload.js' defer></script>";
 echo "<script src='./frontend/assets/js/home/processDistImg.js' defer></script>";
 echo "<script src='./frontend/assets/js/profile/profileSetUpPopUp.js' defer></script>";
 echo "<script src='./backend/ajax/handleTweet.js' type='module' defer></script>";
@@ -55,9 +55,9 @@ echo "<script src='./backend/ajax/handleFollow.js' defer></script>";
             <!----- LEFT SIDE BAR ----->
             <?php include 'backend/shared/leftSidebar.php'; ?>
             <!-- MAIN SECTION -->
-            <div class="main col-md-9 p-0 row">
+            <div class="main col-xl-6 col-lg-9 col-md-10 col-sm-10 p-0">
                 <!-- CONTENT SECTION -->
-                <div class="content col-md-7">
+                <div class="content">
                     <div class="content__header">
                         <h2 class="mb-0 text-primary">Home</h2>
                         <a href="$" class="content__topTweet">
@@ -104,8 +104,10 @@ echo "<script src='./backend/ajax/handleFollow.js' defer></script>";
                     <!-- DISPLAY FOR TWEET -->
                     <ul class="content__tweets"></ul>
                 </div>
-                <!-- RIGHT SIDE BAR SECTION -->
-                <div class="r-sidebar col-md-5">
+            </div>
+            <!-- RIGHT SIDE BAR SECTION -->
+            <div class="r-sidebar col-xl-3 col-lg-3 col-md-3">
+                <div class="r-sidebar__container">
                     <?php include 'backend/shared/r-sidebar.php'; ?> 
                 </div>
             </div>

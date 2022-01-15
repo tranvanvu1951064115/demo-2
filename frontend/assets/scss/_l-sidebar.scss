@@ -1,12 +1,15 @@
 .l-sidebar {
-    position: fixed;
+    position: sticky;
     top: 0;
+    left: 0;
     height: 100vh;
     overflow-y: auto;
     padding: 16px !important;
-    border-right: 1px solid #f0f0f0;
     background-color: white;
-    max-width: 320px;
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
 
     .logo {
         padding: 12px;
@@ -29,6 +32,9 @@
 
     &__menu {
         font-size: 20px;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
 
         * {
             color: $secondary-color;
@@ -40,7 +46,6 @@
         margin-bottom: 10px;
         padding: 14px;
         border-radius: 30px;
-        font-weight: 500;
         display: flex;
         align-items: center;
 
@@ -72,6 +77,11 @@
                 }
             }
         }
+
+        span:last-child:not(.l-sidebar__item--notification-spec) {
+            font-weight: 500;
+            font-size: 22px;
+        }
     }
 
     &__item.active {
@@ -100,6 +110,7 @@
 
     &__icon {
         margin-right: 20px;
+        flex-shrink: 0;
 
         svg:last-child {
             display: none;
@@ -112,12 +123,7 @@
 }
 
 .user {
-    // position: absolute;
-    // bottom: 20px;
-    // left: 0;
     padding: 0 12px;
-    // margin-left: 16px;
-    // margin-right: 16px;
     border-radius: 50px;
     font-weight: 500;
     font-size: 15px;
@@ -125,7 +131,6 @@
     align-items: center;
     cursor: pointer;
     min-width: 100%;
-    margin-top: 200px;
 
     &:hover {
         background-color: rgba(15, 20, 25, 0.1);
@@ -172,13 +177,14 @@
     // USER-LOGOUT
     &-logout-wrapper {
         display: none;
-        position: fixed;
-        top: 0;
-        left: 0;
-        height: 100%;
-        width: 100%;
         &.active {
-            display: inline-block;
+            display: flex;
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            z-index: 99999;
         }
     }
 
@@ -190,7 +196,7 @@
         transform: translateY(-100%);
         left: 110px;
         min-width: 300px;
-        background: white;
+        background-color: white;
         border-radius: 20px;
         display: inline-block;
         overflow: hidden;
@@ -247,4 +253,46 @@
 
     &-name.d-block {}
 
+}
+
+@include responsive(0, 999px) {
+    .l-sidebar {
+        &__link {
+            span {
+                display: none;
+            }
+        }
+        &__item {
+            display: inline-block;
+        }
+        &__icon {
+            margin-right: unset;
+        }
+    }
+    .user {
+        &-info {
+            display: none;
+        }
+        &:hover {
+            background-color: unset!important;
+        }
+        &-avatar {
+            &:hover {
+                opacity: 0.8;
+            }
+        }
+    }
+}
+
+@include responsive(0, 999px) {
+    .l-sidebar { 
+        display: flex;
+        align-items: center;
+    }
+    .l-sidebar__link {
+        justify-content: center;
+    }
+    .user {
+        justify-content: center;
+    }
 }

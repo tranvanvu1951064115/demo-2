@@ -14,9 +14,9 @@ if (!isset($_SESSION['isLogginOK']) || !($_SESSION['isLogginOK'] > 0)) {
 }
 
 $user = userData($_SESSION['isLogginOK']); // USER ĐANG LOGGIN
-$tweet = getInfo('tb_tweets', ['*'], ['tweet_id'=>$_GET['tweetId']], null, null)['0'];
+$tweet = getInfo('tb_tweets', ['*'], ['tweet_id' => $_GET['tweetId']], null, null)['0'];
 $userOfTweet = userData($tweet['tweet_by']); // CHỦ TWEET
-$tweetComments = getInfo('tb_comment', ['*'], ['comment_on'=>$_GET['tweetId']], null, null);
+$tweetComments = getInfo('tb_comment', ['*'], ['comment_on' => $_GET['tweetId']], null, null);
 
 echo "<script src='./frontend/assets/js/leftSideBar/active.js' type='module' defer></script>";
 echo "<script src='./frontend/assets/js/leftSideBar/popUpUserLogout.js' type='module' defer></script>";
@@ -26,8 +26,8 @@ echo "<script src='./frontend/assets/js/home/handleReply.js' defer></script>";
 echo "<script src='./backend/ajax/handleDelTweet.js' defer></script>";
 echo "<script src='./backend/ajax/handleLoveTweet.js' defer></script>";
 echo "<script src='./backend/ajax/handleComment.js' defer></script>";
-echo "<script src='./backend/ajax/handleDisplayTweet.js' defer></script>"; 
-echo "<script src='./backend/ajax/handleDelComment.js' defer></script>"; 
+echo "<script src='./backend/ajax/handleDisplayTweet.js' defer></script>";
+echo "<script src='./backend/ajax/handleDelComment.js' defer></script>";
 echo "<script src='./backend/ajax/handleFollow.js' defer></script>";
 
 // LẤY DỮ LIỆU ẢNH NGƯỜI ĐANG LOGIN
@@ -39,7 +39,7 @@ $imageForOwnTweet = getLinkImage($userOfTweet)['imageAvatar'];
 
 // THÔNG BÁO CỦA NGƯỜI DÙNG
 $notifications = getInfo('tb_notifications', ['*'], ['notification_for' => $user->user_id, 'notification_state' => 1], null, null);
-if(count($notifications) > 0) {
+if (count($notifications) > 0) {
     $activeNotif = 'active';
 } else {
     $activeNotif = 'none';
@@ -53,12 +53,12 @@ if(count($notifications) > 0) {
             <!----- LEFT SIDE BAR ----->
             <?php include 'backend/shared/leftSidebar.php'; ?>
             <!-- MAIN SECTION -->
-            <div class="main col-md-9 p-0 row">
+            <div class="main col-xl-6 col-lg-9 col-md-10 col-sm-10">
                 <!-- CONTENT SECTION -->
-                <div class="content col-md-7">
+                <div class="content">
                     <div class="content__header">
                         <h2 class="mb-0 text-primary">
-                            <a href="<?php echo url_for('home');?>">
+                            <a href="<?php echo url_for('home'); ?>">
                                 <i class="fas fa-arrow-left d-inline-block me-3"></i>
                             </a>
                             Tweet
@@ -71,49 +71,49 @@ if(count($notifications) > 0) {
                             </svg>
                         </a>
                     </div>
-                        <?php   
-                            // XỬ LÝ LẤY NHỮNG LOVES CỦA TWEET
-                            $love =  getInfo('tb_loves', ['love_id'], ['love_forTweet' => $tweet['tweet_id']], null, null);
-                            $amountLove = count($love);
-                            $activeLove = '';
-                            if ($amountLove > 0) {
-                                $activeLove = 'active';
-                            } else {
-                                $amountLove = '';
-                            }
+                    <?php
+                    // XỬ LÝ LẤY NHỮNG LOVES CỦA TWEET
+                    $love =  getInfo('tb_loves', ['love_id'], ['love_forTweet' => $tweet['tweet_id']], null, null);
+                    $amountLove = count($love);
+                    $activeLove = '';
+                    if ($amountLove > 0) {
+                        $activeLove = 'active';
+                    } else {
+                        $amountLove = '';
+                    }
 
-                            // XỬ LÝ ĐỂ LẤY NHỮNG COMMENT CỦA TWEET
-                            $comment =  getInfo('tb_comment', ['comment_id'], ['comment_on' => $tweet['tweet_id']], null, null);
-                            $amountComment = count($comment);
+                    // XỬ LÝ ĐỂ LẤY NHỮNG COMMENT CỦA TWEET
+                    $comment =  getInfo('tb_comment', ['comment_id'], ['comment_on' => $tweet['tweet_id']], null, null);
+                    $amountComment = count($comment);
 
-                            // 1. CHO PHÉP NGƯỜI DÙNG XÓA TWEET HAY KHÔNG
-                            //    CÓ KHI VÀ CHỈ KHI NGƯỜI DÙNG LÀ NGƯỜI ĐÃ TẠO RA TWEET
-                            // 2. XỬ LÝ HIỆN RA 'YOU' NẾU NHƯ NGƯỜI DÙNG ĐANG TỰ COMMENT CHÍNH TWEET
-                            $deleteFuntion = false;
-                            $isYourComment = $userOfTweet->user_userName; // LÀ NGƯỜI DÙNG KHÁC
-                            if($tweet['tweet_by'] == $user->user_id) {
-                                $deleteFuntion = "<a class='content__tweet-delete' onclick = 'handleDelTweet(event,{$tweet['tweet_id']});'>
+                    // 1. CHO PHÉP NGƯỜI DÙNG XÓA TWEET HAY KHÔNG
+                    //    CÓ KHI VÀ CHỈ KHI NGƯỜI DÙNG LÀ NGƯỜI ĐÃ TẠO RA TWEET
+                    // 2. XỬ LÝ HIỆN RA 'YOU' NẾU NHƯ NGƯỜI DÙNG ĐANG TỰ COMMENT CHÍNH TWEET
+                    $deleteFuntion = false;
+                    $isYourComment = $userOfTweet->user_userName; // LÀ NGƯỜI DÙNG KHÁC
+                    if ($tweet['tweet_by'] == $user->user_id) {
+                        $deleteFuntion = "<a class='content__tweet-delete' onclick = 'handleDelTweet(event,{$tweet['tweet_id']});'>
                                                     <i class='far fa-trash-alt'></i>
                                                     Delete
                                                 </a>";
-                                $isYourComment = 'you';
-                            }
+                        $isYourComment = 'you';
+                    }
 
-                            // LINK PROFILE
-                            $linkProfile = url_for("profile?userProfile=$userOfTweet->user_id");
+                    // LINK PROFILE
+                    $linkProfile = url_for("profile?userProfile=$userOfTweet->user_id");
 
-                            // LẤY DỮ LIỆU ẢNH CHỦ TWEET
-                            $avatarOwnTweet = getLinkImage($userOfTweet)['imageAvatar'];
+                    // LẤY DỮ LIỆU ẢNH CHỦ TWEET
+                    $avatarOwnTweet = getLinkImage($userOfTweet)['imageAvatar'];
 
-                            // LẤY ẢNH CỦA NGƯỜI DÙNG ĐÃ ĐĂNG TẢI
-                            $imagesOfTweet = getInfo('tb_uploadedimages', ['uploadedImage_link'], ['uploadedImage_forTweet'=>$tweet['tweet_id']], null, null);
-                            $imageForDisplay = '';
-                            if(count($imagesOfTweet) > 0) {
-                                foreach($imagesOfTweet as $image) {
-                                    $imageForDisplay .= "<div class='container-post-image'><img src='backend/uploads/$userOfTweet->user_id/tweet-{$tweet['tweet_id']}-{$image['uploadedImage_link']}' alt=''></div>";
-                                }
-                            }
-                                echo "<div class='content__tweet-main'>
+                    // LẤY ẢNH CỦA NGƯỜI DÙNG ĐÃ ĐĂNG TẢI
+                    $imagesOfTweet = getInfo('tb_uploadedimages', ['uploadedImage_link'], ['uploadedImage_forTweet' => $tweet['tweet_id']], null, null);
+                    $imageForDisplay = '';
+                    if (count($imagesOfTweet) > 0) {
+                        foreach ($imagesOfTweet as $image) {
+                            $imageForDisplay .= "<div class='container-post-image'><img src='backend/uploads/$userOfTweet->user_id/tweet-{$tweet['tweet_id']}-{$image['uploadedImage_link']}' alt=''></div>";
+                        }
+                    }
+                    echo "<div class='content__tweet-main'>
                                         <li class='content__tweet' data-id='{$tweet['tweet_id']}' onclick='handleDisplayTweet(event, {$tweet['tweet_id']});'>
                                             <div class='content__tweet-reply-user-avatar content__tweet-reply-user-avatar-forcomment'>
                                                 <img width='48px' height='48px' src='$avatarOwnTweet' alt='' class='content__tweet-user-avatar'>
@@ -204,18 +204,18 @@ if(count($notifications) > 0) {
                                             </div>
                                         </li>
                                     </div>";
-                        ?>
-                        <div class="content__tweet-comments">
-                            <!-- DISPLAY COMMENTS -->
-                            <ul class="content__tweet-comments-menu ms-5">
-                                <?php include 'backend/shared/dataComments.php'; ?>
-                            </ul>
-                        </div>
-                <!-- RIGHT SIDE BAR SECTION -->
+                    ?>
+                    <div class="content__tweet-comments">
+                        <!-- DISPLAY COMMENTS -->
+                        <ul class="content__tweet-comments-menu">
+                            <?php include 'backend/shared/dataComments.php'; ?>
+                        </ul>
+                    </div>
                 </div>
-                <div class="r-sidebar col-md-5">
-                    R-Sidebar
-                </div>
+            </div>
+            <!-- RIGHT SIDE BAR SECTION -->
+            <div class="r-sidebar col-xl-3 col-lg-3 col-md-3">
+                <?php include 'backend/shared/r-sidebar.php'; ?> 
             </div>
         </div>
 

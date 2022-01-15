@@ -1,3 +1,4 @@
+// handleLoveTweet(event, {$row['tweet_id']}, {$user->user_id});
 function handleLoveTweet(event, tweet, user) {
     // TĂNG SỐ LƯỢNG LOVE UI
     event.preventDefault();
@@ -19,15 +20,14 @@ function handleLoveTweet(event, tweet, user) {
                     loveBtn.setAttribute('data-loves', '');
                     loveBtn.classList.remove('active');
                 }
-                insertNotification(user, tweet, "love")
+                insertNotification(user, tweet, "love");
             }                    
         });
     }
-
 }
 
 function insertNotification(user, tweet, type) {
-    // 2. GỬI ĐỂ XỬ LÝ 
+    // 2. GỬI ĐỂ XỬ LÝ
     $.ajax({
         url: 'backend/functions/process/sendNotification.php',
         type: 'POST',

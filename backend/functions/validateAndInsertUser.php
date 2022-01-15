@@ -78,13 +78,13 @@
 
         // Chuẩn bị câu lệnh và thực thi insert người dùng lên csdl
         $statement = $conn->prepare("INSERT INTO tb_users(user_firstName, user_lastName, user_userName, user_email, user_password, user_profileImage, user_profileCover) VALUES(:fn, :ln, :un, :em, :pw, :pi, :pc)");
-        $statement->bindParam(":fn",$firstName, PDO::PARAM_STR);
-        $statement->bindParam(":ln",$lastName, PDO::PARAM_STR);
-        $statement->bindParam(":un",$userName, PDO::PARAM_STR);
-        $statement->bindParam(":em",$email, PDO::PARAM_STR);
-        $statement->bindParam(":pw",$password_hashed, PDO::PARAM_STR);
-        $statement->bindParam(":pi",$profilePic, PDO::PARAM_STR);
-        $statement->bindParam(":pc",$profileCover, PDO::PARAM_STR);
+        $statement->bindParam(":fn",$firstName,         PDO::PARAM_STR);
+        $statement->bindParam(":ln",$lastName,          PDO::PARAM_STR);
+        $statement->bindParam(":un",$userName,          PDO::PARAM_STR);
+        $statement->bindParam(":em",$email,             PDO::PARAM_STR);
+        $statement->bindParam(":pw",$password_hashed,   PDO::PARAM_STR);
+        $statement->bindParam(":pi",$profilePic,        PDO::PARAM_STR);
+        $statement->bindParam(":pc",$profileCover,      PDO::PARAM_STR);
         $statement->execute();
         // Lấy id cuối cùng được chèn để return ra kết quả, tương tự như việc thành công chèn bản ghi mới vào trong cơ sở dữ liệu
         return $conn->lastInsertId();

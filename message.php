@@ -23,6 +23,9 @@ if(count($notifications) > 0) {
     $activeNotif = 'none';
 }
 
+// LẤY DỮ LIỆU ẢNH NGƯỜI ĐANG LOGIN
+$imageAvatarOfUserLogined = getLinkImage($user)['imageAvatar'];
+
 echo "<script src='./frontend/assets/js/leftSideBar/active.js' type='module' defer></script>";
 echo "<script src='./frontend/assets/js/leftSideBar/popUpUserLogout.js' type='module' defer></script>";
 echo "<script src='./frontend/assets/js/message/popUpBoxMessage.js' defer></script>";

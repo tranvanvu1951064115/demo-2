@@ -1,4 +1,4 @@
-$('#searchTwitter').on("keyup", function(e) {
+$('.searchTwitter').on("keyup", function(e) {
     const valueInput = $(this).val();
     // XỬ LÝ AJAX
     $.ajax({

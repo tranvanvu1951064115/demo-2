@@ -130,3 +130,14 @@
         }
     }
 }
+
+@include responsive(0, 575px) {
+    .form-nav ul li:first-child {
+        margin-right: 20px;
+        margin-top: -2px;
+    }
+    .form-group input {
+        min-width: 400px;
+    }
+}
+

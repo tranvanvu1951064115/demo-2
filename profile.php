@@ -85,9 +85,9 @@ echo "<script src='./backend/ajax/handleFollow.js' defer></script>";
             <!----- LEFT SIDE BAR ----->
             <?php include 'backend/shared/leftSidebar.php'; ?>
             <!-- MAIN SECTION -->
-            <div class="main col-md-9 p-0 row">
+            <div class="main col-xl-6 col-lg-9 col-md-10 col-sm-10 p-0">
                 <!-- CONTENT SECTION -->
-                <div class="content col-md-7">
+                <div class="content">
                     <div class="content__header">
                         <h2 class="mb-0 text-primary">
                             <a href="<?php echo url_for('home'); ?>">
@@ -180,10 +180,10 @@ echo "<script src='./backend/ajax/handleFollow.js' defer></script>";
                         ?>
                     </div>
                 </div>
-                <!-- RIGHT SIDE BAR SECTION -->
-                <div class="r-sidebar col-md-5">
-                    <?php include 'backend/shared/r-sidebar.php'; ?> 
-                </div>
+            </div>
+            <!-- RIGHT SIDE BAR SECTION -->
+            <div class="r-sidebar col-xl-3 col-lg-3 col-md-3">
+                <?php include 'backend/shared/r-sidebar.php'; ?> 
             </div>
         </div>
 
