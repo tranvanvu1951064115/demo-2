@@ -1,6 +1,6 @@
 <div class="l-sidebar col-xl-3 col-lg-3 col-md-2 col-sm-2 ps-3 pe-3 d-flex flex-column justify-content-between">
     <div class="l-sidebar__main">
-        <a class="logo" href="<?php echo url_for("index") ?>">
+        <a class="logo" href="index.php">
             <span>
                 <svg viewBox="0 0 24 24" aria-hidden="true" class="r-jwli3a r-4qtqp9 r-yyyyoo r-rxcuwo r-1777fci r-m327ed r-dnmrzs r-494qqr r-bnwqim r-1plcrui r-lrvibr">
                     <g>
@@ -11,7 +11,7 @@
         </a>
         <ul class="l-sidebar__menu">
             <li class="l-sidebar__item">
-                <a href="<?php echo url_for("home") ?>" class="l-sidebar__link">
+                <a href="home.php" class="l-sidebar__link">
                     <div class="l-sidebar__icon">
                         <svg width="26px" height="26px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                             <g>
@@ -29,7 +29,7 @@
                 </a>
             </li>
             <li class="l-sidebar__item">
-                <a href="<?php echo url_for("explore") ?>" class="l-sidebar__link">
+                <a href="explore.php" class="l-sidebar__link">
                     <div class="l-sidebar__icon">
                         <svg width="26px" height="26px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                             <g>
@@ -46,7 +46,7 @@
                 </a>
             </li>
             <li class="l-sidebar__item l-sidebar__item--notification">
-                <a href="<?php echo url_for("notification") ?>" class="l-sidebar__link">
+                <a href="notification.php" class="l-sidebar__link">
                     <div class="l-sidebar__icon">
                         <svg width="26px" height="26px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                             <g>
@@ -66,7 +66,7 @@
                 </span>
             </li>
             <li class="l-sidebar__item">
-                <a href="<?php echo url_for("message") ?>" class="l-sidebar__link">
+                <a href="message.php" class="l-sidebar__link">
                     <div class="l-sidebar__icon">
                         <svg width="26px" height="26px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                             <g>
@@ -111,7 +111,7 @@
                 </a>
             </li>
             <li class="l-sidebar__item">
-                <a href="<?php echo url_for("profile?userProfile=$user->user_id") ?>" class="l-sidebar__link">
+                <a href="profile?userProfile=<?php echo $user->user_id ?>" class="l-sidebar__link">
                     <div class="l-sidebar__icon">
                         <svg width="26px" height="26px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                             <g>
@@ -145,7 +145,7 @@
         </div>
     </div>
     <div class="user-logout-wrapper">
-        <form class="user-logout-main" action="<?php echo url_for('index'); ?>" method="post">
+        <form class="user-logout-main" action="index.php" method="post">
             <div class="user-logout-content">
                 <div class="user-avatar">
                     <img width="40px" height="40px" src="<?php echo $imageAvatarOfUserLogined; ?>" alt="<?php echo $user->user_userName ?>">

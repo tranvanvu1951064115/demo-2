@@ -10,7 +10,7 @@ include 'backend/shared/header.php';
 
 // KIỂM TRA XEM ĐÃ ĐƯỢC CẤP QUYỀN NGƯỜI DÙNG HAY CHƯA
 if (!isset($_SESSION['isLogginOK']) || !($_SESSION['isLogginOK'] > 0)) {
-    redirect_to(url_for('index'));
+    header("location: index.php");
 }
 
 $user = userData($_SESSION['isLogginOK']); //NGƯỜI DÙNG ĐANG ĐĂNG NHẬP
@@ -90,7 +90,7 @@ echo "<script src='./backend/ajax/handleFollow.js' defer></script>";
                 <div class="content">
                     <div class="content__header">
                         <h2 class="mb-0 text-primary">
-                            <a href="<?php echo url_for('home'); ?>">
+                            <a href="home.php">
                                 <i class="fas fa-arrow-left d-inline-block me-3"></i>
                             </a>
                             Profile | <?php echo "<span>$userProfile->user_firstName $userProfile->user_lastName</span>" ?>
@@ -138,7 +138,7 @@ echo "<script src='./backend/ajax/handleFollow.js' defer></script>";
                         <!-- PROFILE SETUP -->
                         <?php 
                             if($user->user_id == $userProfile->user_id) {
-                            $location = url_for("backend/functions/process/processEditProfile.php");
+                            $location = "backend/functions/process/processEditProfile.php";
                             $errorMessage = (isset($_GET['errorMessage'])) ? $_GET['errorMessage'] : '';
                             $activeBoxEdit = '';
                             if($errorMessage) {

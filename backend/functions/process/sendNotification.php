@@ -10,7 +10,7 @@
     $userForTweet = getInfo('tb_tweets', ['tweet_by'], ['tweet_id'=>$_POST['forTweet']], null, null)[0];
 
     if($userForTweet['tweet_by'] !==  $user->user_id) {
-      // 1 LẤY THÔNG TIN NGƯỜI DÙNG CỦA TWEET
+      // 1. LẤY THÔNG TIN NGƯỜI DÙNG CỦA TWEET
       // 2. CHÈN THÔNG BÁO VÀO CSDL
       insert('tb_notifications', ['notification_for'=>$userForTweet['tweet_by'], 'notification_fromTweet'=>$_POST['forTweet'], 'notification_type'=>$_POST['type'], 'notification_by'=>$user->user_id]);
       
@@ -21,6 +21,7 @@
         'cluster' => 'ap1',
         'encrypt' => true
       );
+
       // KEY
       // SECRET
       // APP_ID
@@ -43,6 +44,7 @@
       // 5. KIỂM TRA NGƯỜI ĐANG ĐĂNG NHẬP VỚI NGƯỜI REPLY NẾU KHÔNG TRÙNG THÌ MỚI HIỂN THỊ THÔNG BÁO
       
       // 3. TÊN KÊNH / SỰ KIỆN / DỮ LIỆU
+      // Twitter-$userForTweet['tweet_by']
       $pusher->trigger("Twitter-{$userForTweet['tweet_by']}", 'notice', $data);
     }
   }

@@ -1,7 +1,7 @@
 <?php 
     include '../../initialize.php';
     if (!isset($_SESSION['isLogginOK']) || !($_SESSION['isLogginOK'] > 0) || !isset($_POST["uploadProfile"])) {
-        redirect_to(url_for('index'));
+        header("location: ../../../index.php");
     }
     // LẤY DỮ LIỆU NGƯỜI DÙNG
     $user = userData($_SESSION['isLogginOK']);
@@ -74,7 +74,7 @@
         }
 
         // Display status message
-        header("location:http://localhost/twitter/profile?userProfile=$user->user_id&errorMessage=$errorMessage");
+        header("location:../../../profile?userProfile=$user->user_id&errorMessage=$errorMessage");
     }
     
 ?>

@@ -42,7 +42,7 @@
     } else {
         // Nếu không có biến userSubmited thì tức là người dùng chưa được chèn vào trong bảng USER 
         // Khi đó sẽ trực tiếp quay trở lại trang index
-        redirect_to(url_for("index"));
+        header("location: index.php");
     }
 
     // QUY TRÌNH THỰC THI 
@@ -64,7 +64,7 @@
                 } else {
                     if(update("tb_verification", $user_id, array("user_id"=>$user_id, "code"=>$code, "status"=>1))) {
                         $_SESSION['isLogginOK'] = $user_id;
-                        redirect_to(url_for("home"));
+                        header("location: home.php");
                     }
                 }
             } else {

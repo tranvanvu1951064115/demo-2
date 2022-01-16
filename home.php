@@ -10,7 +10,7 @@ include 'backend/shared/header.php';
 
 // KIỂM TRA XEM ĐÃ ĐƯỢC CẤP QUYỀN NGƯỜI DÙNG HAY CHƯA
 if (!isset($_SESSION['isLogginOK']) || !($_SESSION['isLogginOK'] > 0)) {
-    redirect_to(url_for('index'));
+    header("location: index.php");
 }
 
 $user = userData($_SESSION['isLogginOK']);

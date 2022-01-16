@@ -11,7 +11,7 @@
                 $_SESSION['isLoginAdmin'] = $user->user_id;
                 header("location: ../../admin/src/index.php");
             } else {
-                header("location: ../../admin/login.php");
+                header("location: ../../admin/index.php");
             }
         } catch(Exception $e) {
             header("location: ../../error.php?error={$e->getMessage()}");

@@ -125,7 +125,6 @@ export const validator = {
       if (this.setErrorMessage()) {
         e.preventDefault();
       } else {
-        e.preventDefault();
         const rememberBtn = document.querySelector('#check[name="remember"]');
         const formSign = document.querySelector('.form-signup-main');
         if(rememberBtn.checked) {

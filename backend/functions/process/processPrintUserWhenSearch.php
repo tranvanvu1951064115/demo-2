@@ -7,7 +7,7 @@
     }
 
     // LẤY NHỮNG NGƯỜI DÙNG TỪ VIỆC TÌM KIẾM
-    $sql = "SELECT * FROM tb_users WHERE user_userName like ?";
+    $sql = "SELECT * FROM tb_users WHERE user_userName like ? AND user_isAdmin = '0'";
     $stmt = $conn->prepare($sql);
     $stmt->bindValue(1, "%{$_POST['valueInput']}%", PDO::PARAM_STR);
     // Thực thi sql
@@ -15,6 +15,7 @@
     // Lấy ra vị trí vừa mới chèn vào
     $userForSearch = $stmt->fetchAll(PDO::FETCH_OBJ);  
 
+    $html = '';
     foreach($userForSearch as $key => $value) {
         // ẢNH NGƯỜI DÙNG
         $imageAvatar = getLinkImage($value)['imageAvatar'];
@@ -22,7 +23,7 @@
         // LIÊN KẾT TỚI TRANG CÁ NHÂN CỦA NGƯỜI DÙNG
         $linkProfile = url_for("profile?userProfile={$value->user_id}");
 
-        echo "<li class='r-sidebar__main-item'>
+        $html.= "<li class='r-sidebar__main-item'>
                 <img class='rounded-circle' width='40px' height='40px' src='$imageAvatar' alt='Avatar'>
                 <div class='r-sidebar__main-item-name'>
                     <a class='r-sidebar__main-item-name-top d-flex' href='$linkProfile'>
@@ -34,4 +35,5 @@
                 </div>
             </li>";
     }
+    echo $html;
 ?>

@@ -41,7 +41,7 @@ function insertNotification(userReply, forTweet, type) {
             type,
         },
         success(data) {
-            console.log(data);
+            // console.log(data);
         }                  
     });
 }

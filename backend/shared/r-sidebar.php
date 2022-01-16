@@ -37,7 +37,7 @@
                 $imageAvatar = getLinkImage($userRandom)['imageAvatar'];
 
                 // TẠO LIÊN KẾT TỚI TRANG CÁ NHÂN CỦA NGƯỜI DÙNG
-                $linkProfile = url_for("profile?userProfile=$userRandom->user_id");
+                $linkProfile = "profile?userProfile=$userRandom->user_id";
 
                 // LẤY THÔNG TIN NGƯỜI FOLLOW
                 $inforFollow = getInfo('tb_follows', ['*'], ['follow_user'=>$user->user_id, 'follow_following'=>$randomNumber], null, null);

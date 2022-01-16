@@ -14,7 +14,7 @@
             }
             // LẤY DỮ LIỆU NGƯỜI ĐÃ COMMENT 
             $userComment = userData($row['comment_by']);        
-            $linkProfile = url_for("profile?userProfile=$userComment->user_id");    
+            $linkProfile = "profile?userProfile=$userComment->user_id";    
             // LẤY LINK ẢNH NGƯỜI DÙNG
             $imageAvatar = getLinkImage($userComment)['imageAvatar'];
 

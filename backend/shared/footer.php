@@ -20,13 +20,14 @@
         var index = '<?php if(isset($user)) echo $user->user_id; ?>';
         var channel = pusher.subscribe(`Twitter-${index}`);
         // THIẾT LẬP SỰ KIỆN KHI CÓ THÔNG BÁO ĐƯỢC GỬI VỀ
-        function changeType(type) {
-            switch(type){
-                case 'comment': {
-                    return 'bình luận';
-                }
-            }
-        }
+        // function changeType(type) {
+        //     switch(type){
+        //         case 'comment': {
+        //             return 'bình luận';
+        //         }
+        //     }
+        // }
+
         channel.bind('notice', function (data) {
             {
                 // THIẾT LẬP CÂU HÌNH TIN THÔNG BÁO

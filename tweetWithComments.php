@@ -10,7 +10,7 @@ include 'backend/shared/header.php';
 
 // KIỂM TRA XEM ĐÃ ĐƯỢC CẤP QUYỀN NGƯỜI DÙNG HAY CHƯA
 if (!isset($_SESSION['isLogginOK']) || !($_SESSION['isLogginOK'] > 0)) {
-    redirect_to(url_for('index'));
+    header("location: index.php");
 }
 
 $user = userData($_SESSION['isLogginOK']); // USER ĐANG LOGGIN
@@ -58,7 +58,7 @@ if (count($notifications) > 0) {
                 <div class="content">
                     <div class="content__header">
                         <h2 class="mb-0 text-primary">
-                            <a href="<?php echo url_for('home'); ?>">
+                            <a href="home.php">
                                 <i class="fas fa-arrow-left d-inline-block me-3"></i>
                             </a>
                             Tweet
@@ -100,7 +100,7 @@ if (count($notifications) > 0) {
                     }
 
                     // LINK PROFILE
-                    $linkProfile = url_for("profile?userProfile=$userOfTweet->user_id");
+                    $linkProfile = "profile?userProfile=$userOfTweet->user_id";
 
                     // LẤY DỮ LIỆU ẢNH CHỦ TWEET
                     $avatarOwnTweet = getLinkImage($userOfTweet)['imageAvatar'];

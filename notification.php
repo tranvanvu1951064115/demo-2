@@ -10,7 +10,7 @@ include 'backend/shared/header.php';
 
 // KIỂM TRA XEM ĐÃ ĐƯỢC CẤP QUYỀN NGƯỜI DÙNG HAY CHƯA
 if (!isset($_SESSION['isLogginOK']) || !($_SESSION['isLogginOK'] > 0)) {
-    redirect_to(url_for('index'));
+    header("location: index.php");
 }
 
 $isPageNotice = true;
@@ -51,7 +51,7 @@ echo "<script src='./frontend/assets/js/notification/navTweet.js' defer></script
                 <div class="content">
                     <div class="content__header">
                         <h2 class="mb-0 text-primary">
-                            <a href="<?php echo url_for('home'); ?>">
+                            <a href="home.php">
                                 <i class="fas fa-arrow-left d-inline-block me-3"></i>
                             </a>
                             Notification

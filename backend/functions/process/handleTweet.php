@@ -2,7 +2,7 @@
 include '../../initialize.php';
 // KIỂM TRA XEM ĐÃ ĐƯỢC CẤP QUYỀN NGƯỜI DÙNG HAY CHƯA
 if (!isset($_SESSION['isLogginOK']) || !($_SESSION['isLogginOK'] > 0)) {
-    redirect_to(url_for('index'));
+    header("location: ../../../index.php");
 }
 
 // LẤY DỮ LIỆU NGƯỜI DÙNG
@@ -122,7 +122,7 @@ if (count($tweets) > 0) {
         }
 
         // LINK PROFILE
-        $linkProfile = url_for("profile?userProfile=$userOfTweet->user_id");
+        $linkProfile = "profile?userProfile=$userOfTweet->user_id";
 
         // LẤY LINK ẢNH NGƯỜI DÙNG
         $imageCover = getLinkImage($userOfTweet)['imageCover'];
